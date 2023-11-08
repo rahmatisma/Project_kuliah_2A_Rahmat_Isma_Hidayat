@@ -30,7 +30,7 @@ $select_kat_menu = mysqli_query ($conn, "SELECT id_kat_menu,kategori_menu FROM t
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form form class="needs-validation" novalidate action="proses/proses_input_menu.php"
+                            <form class="needs-validation" novalidate action="proses/proses_input_menu.php"
                                 method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -343,7 +343,6 @@ $select_kat_menu = mysqli_query ($conn, "SELECT id_kat_menu,kategori_menu FROM t
             <?php
             }
             ?>
-
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>

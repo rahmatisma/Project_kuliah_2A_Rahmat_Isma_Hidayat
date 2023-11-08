@@ -16,10 +16,11 @@
         } else {
             $query = mysqli_query($conn, "UPDATE tb_user SET nama = '$name', username = '$username', level = '$level', nohp = '$nohp', alamat = '$alamat' WHERE id='$id'");
             if ($query) {
-                $message = '<script>alert("Data berhasil diupdate");
+                $message = '<script>alert("Data berhasil diupdate")
                         window.location="../user"</script>';
             } else {
-                $message = '<script>alert("Data gagal diupdate")</script>';
+                $message = '<script>alert("Data gagal diupdate")
+                            window.location="../user"</script>';
             }
         }
     } echo $message;
