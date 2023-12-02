@@ -12,7 +12,7 @@
 <body>
     <div class="header_content">
         <h5>Hai Kamu, Mau Nonton Apa Hari Ini ?</h5>
-        <h5>Upcoming</h5>
+        <h5>Upcom ing</h5>
         <div class="search-container">
             <form class="d-flex" role="search" id="headerSearchForm">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
