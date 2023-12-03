@@ -7,7 +7,7 @@ include "connect.php";
         $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username' && password = '$password'");
         $hasil = mysqli_fetch_array($query);
         if($hasil){
-            $_SESSION['username_T-Line'] = $username;
+            $_SESSION['username_TLine'] = $username;
             header('Location:../home');
         } else { ?>
             <script>
