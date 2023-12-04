@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!empty($_SESSION['username_TLine'])) {
+    include "proses/connect.php";
+    $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_TLine]'");
+    $hasil = mysqli_fetch_array($query);
+    if ($_SESSION['level_user'] == 6 || $_SESSION['level_user'] == 5) {
+        header('Location:../home');
+    }
+} else {
+    header('location:login');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +90,7 @@
                     </span>
                     <h3>Add Product</h3>
                 </a>
-                <a href="index.html">
+                <a href="/proses/proses_logout.php">
                     <span class="material-symbols-outlined">
                         logout
                     </span>

@@ -58,13 +58,26 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php 
-                                    echo $hasil['nama'];
+                                    if(empty($_SESSION['username_TLine'])){
+                                        echo "User";
+                                    } else {
+                                        echo $hasil['nama'];
+                                    }
+                                    
                                 ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end mt-2">
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalUbahProfile"><i class="bi bi-person-square"></i> Profile</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalUbahPassword"><i class="bi bi-key"></i> Ubah Password</a></li>
-                                <li><a class="dropdown-item" href="logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                                <?php 
+                                    if(empty($_SESSION['username_TLine'])){ ?>
+                                        <li><a class="dropdown-item" href="login"><i class="bi bi-box-arrow-in-left"></i> Login</a></li>
+                                    <?php } else { ?>
+                                        <li><a class="dropdown-item" href="logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                                    <?php } ?>
+                                    
+                                
+                                
                             </ul>
                         </li>
                     </ul>

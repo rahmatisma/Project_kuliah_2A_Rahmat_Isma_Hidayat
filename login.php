@@ -2,7 +2,12 @@
     session_start();
     if(!empty($_SESSION['username_TLine'])){
         header('location: Home');
+        if($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
+            header('location: dasboard');
+        }
     }
+
+
 ?>
 <html lang="en">
 

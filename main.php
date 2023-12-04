@@ -1,12 +1,13 @@
-<?php 
-    session_start();
-    if(empty($_SESSION['username_TLine'])){
-        header('location: login');
-    }
-
+<?php
+session_start();
+if (!empty($_SESSION['username_TLine'])) {
     include "proses/connect.php";
     $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_TLine]'");
     $hasil = mysqli_fetch_array($query);
+    if($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 2 || $_SESSION['level_user'] == 3) {
+        header('location: dasboard');
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,7 @@
     <!-- Akhir Navbar -->
 
     <!-- Content -->
-    <?php 
+    <?php
     include $page;
     ?>
     <!-- Akhir Content -->
