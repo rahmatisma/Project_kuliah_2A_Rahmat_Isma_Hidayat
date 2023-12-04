@@ -102,11 +102,9 @@ if (!empty($_SESSION['username_TLine'])) {
         <!-- content -->
         <main>
             <h1>Dashboard</h1>
-
             <div class="date">
                 <input type="date">
             </div>
-
             <div class="insights">
                 <div class="card sales">
                     <div class="card-body">
@@ -154,58 +152,65 @@ if (!empty($_SESSION['username_TLine'])) {
             </div>
             <!-- end insights -->
 
-            <div class="recent-order">
-                <h2>Recent Order</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Film Name</th>
-                            <th>Seet Number</th>
-                            <th>Payment Method</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>The Flash</td>
-                            <td>C2</td>
-                            <td>Gopay</td>
-                            <td class="warning">PendiNG</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>The Flash</td>
-                            <td>F3</td>
-                            <td>Gopay</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>The Flash</td>
-                            <td>A1</td>
-                            <td>Gopay</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>The Flash</td>
-                            <td>B4</td>
-                            <td>Gopay</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>The Flash</td>
-                            <td>C1</td>
-                            <td>Gopay</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#">Show All</a>
+            <div class="last-chill">
+                <div class="card order mt-3">
+                    <h2 class="card-header">Recent Order</h2>
+                    <div class="card-body">
+                        <div class="recent-order">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Film Name</th>
+                                        <th>Seet Number</th>
+                                        <th>Payment Method</th>
+                                        <th class="status">Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>The Flash</td>
+                                        <td>C2</td>
+                                        <td>Gopay</td>
+                                        <td class="warning">PendiNG</td>
+                                        <td class="primary">Details</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The Flash</td>
+                                        <td>F3</td>
+                                        <td>Gopay</td>
+                                        <td class="warning">Pending</td>
+                                        <td class="primary">Details</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The Flash</td>
+                                        <td>A1</td>
+                                        <td>Gopay</td>
+                                        <td class="warning">Pending</td>
+                                        <td class="primary">Details</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The Flash</td>
+                                        <td>B4</td>
+                                        <td>Gopay</td>
+                                        <td class="warning">Pending</td>
+                                        <td class="primary">Details</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The Flash</td>
+                                        <td>C1</td>
+                                        <td>Gopay</td>
+                                        <td class="warning">Pending</td>
+                                        <td class="primary">Details</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#">Show All</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </main>
         <!-- end main -->
 
@@ -235,34 +240,37 @@ if (!empty($_SESSION['username_TLine'])) {
                 </div>
             </div>
             <!-- end top -->
-            <div class="recent-updates">
-                <h2>Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/Lebah ganteng.webp">
+
+            <div class="recent-updates mt-5">
+                <div class="card updates">
+                    <h2 class="card-header">Recent Updates</h2>
+                    <div class="card-body">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/Lebah ganteng.webp">
+                            </div>
+                            <div class="message">
+                                <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
+                                <small class="text-muted">2 Minutes Ago</small>
+                            </div>
                         </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
-                            <small class="text-muted">2 Minutes Ago</small>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/Lebah ganteng.webp">
+                            </div>
+                            <div class="message">
+                                <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
+                                <small class="text-muted">2 Minutes Ago</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/Lebah ganteng.webp">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
-                            <small class="text-muted">2 Minutes Ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/Lebah ganteng.webp">
-                        </div>
-                        <div class="message">
-                            <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
-                            <small class="text-muted">2 Minutes Ago</small>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/Lebah ganteng.webp">
+                            </div>
+                            <div class="message">
+                                <p><b>Mike Tyson</b> Membeli ticket pada kursi C2 pada film The Flash.</p>
+                                <small class="text-muted">2 Minutes Ago</small>
+                            </div>
                         </div>
                     </div>
                 </div>

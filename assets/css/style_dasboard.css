@@ -59,6 +59,7 @@ body {
     background: var(--color-bacground);
     user-select: none;
     overflow-x: hidden;
+    height: 10000px;
 }
 
 .container {
@@ -351,24 +352,26 @@ main .insights small {
 
 /* user order */
 main .recent-order {
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
-main .recent-order h2 {
-    margin-bottom: 0.8rem;
-}
-
-main .recent-order table {
+main .card {
     background: var(--color-white);
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
-    text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
 }
 
-main .recent-order table:hover {
+main .recent-order table {
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+main .card:hover {
     box-shadow: none;
 }
 
@@ -377,6 +380,7 @@ main table tbody td {
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
+
 
 main table tbody tr:last-child td {
     border: none;
@@ -439,7 +443,7 @@ main a {
 }
 
 /* recent update */
-.right .recent-updates {
+.right .recent-updates{
     margin-top: 1rem;
 }
 
@@ -501,12 +505,12 @@ main a {
         width: 105%;
     }
 
-    main .recent-order {
-        width: 74%;
+    main .last-chill {
+        width: 70%;
         position: absolute;
-        left: 50%;
+        left: 52%;
         transform: translateX(-64%);
-        margin: 2rem 0 0 8.8rem;
+        margin: 0.5rem 0 10rem 8.8rem;
     }
 
     main .insights .progress .number .satu{
@@ -614,17 +618,16 @@ main a {
         padding: 0 1rem;
     }
 
-    main .recent-order {
+    main .last-chill {
         position: relative;
-        margin: 3rem 0 0 0;
-        width: 100%;
+        margin: 2rem -5rem 0 0;
+        width: 100%;   
         margin-left: 50px;
     }
 
-    main .recent-order table {
+    main .last-chill .recent-order table {
         width: 100%;
         margin: 0;
-        
     }
     
     .right {
