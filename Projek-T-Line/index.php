@@ -18,7 +18,9 @@
         include "login.php";
     } else if (isset($_GET['x']) && $_GET['x'] == 'logout') {
         include "proses/proses_logout.php";
-    }else {
+    } else if (isset($_GET['x']) && $_GET['x'] == 'dasboard') {
+        include "dasboard.php";
+    } else {
         $page = "home.php";
         include "main.php";
     }

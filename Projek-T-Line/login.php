@@ -1,8 +1,13 @@
 <?php 
     session_start();
-    if(!empty($_SESSION['username_T-Line'])){
+    if(!empty($_SESSION['username_TLine'])){
         header('location: Home');
+        if($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
+            header('location: dasboard');
+        }
     }
+
+
 ?>
 <html lang="en">
 
@@ -22,7 +27,7 @@
     <div class="container" id="container">
         <!-- Form Registasi-->
         <div class="form-container sign-up-container">
-            <form action="proses/proses_login.php" method="post" class="needs-validation" novalidate>
+            <form action="proses/proses_regis.php" method="post" class="needs-validation" novalidate>
                 <div class="header-form">
                     <h3>Create Account</h3>
                     <span>or use your email for registration</span>
@@ -48,7 +53,7 @@
                         Masukkan Password.
                     </div>
                 </div>
-                <button type="submit" name="regis_validate">Sign Up</button>
+                <button type="submit" name="regis_validate" value="123">Sign Up</button>
                 <p class="button-responsive">Anda sudah memiliki Akun? <a href="#"><b id="signInRes">Sign In</b></a></p>
             </form>
         </div>

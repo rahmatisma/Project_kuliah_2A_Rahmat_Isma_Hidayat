@@ -7,8 +7,14 @@ include "connect.php";
         $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username' && password = '$password'");
         $hasil = mysqli_fetch_array($query);
         if($hasil){
-            $_SESSION['username_T-Line'] = $username;
-            header('Location:../home');
+            $_SESSION['username_TLine'] = $username;
+            $_SESSION['level_user'] = $hasil['level'];
+            if ($_SESSION['level_user'] == 6 || $_SESSION['level_user'] == 5) {
+                header('Location:../home');
+            } else if ($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
+                header('Location:../dasboard');
+            }
+            
         } else { ?>
             <script>
                 alert('Username salah atau password salah');
