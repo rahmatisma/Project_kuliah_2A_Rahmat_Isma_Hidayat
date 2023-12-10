@@ -19,7 +19,27 @@
     } else if (isset($_GET['x']) && $_GET['x'] == 'logout') {
         include "proses/proses_logout.php";
     } else if (isset($_GET['x']) && $_GET['x'] == 'dasboard') {
-        include "dasboard.php";
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Ticket') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Film') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Berita') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'PromoAdmin') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Makanan') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Theater') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'User') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Messages') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Orders') {
+        include "Admin/indexadmin.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'Report') {
+        include "Admin/indexadmin.php";
     } else {
         $page = "home.php";
         include "main.php";

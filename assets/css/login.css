@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
-    margin: -20px 0 50px;
+    /* margin: -20px 0 50px; */
     overflow: hidden;
 }
 
@@ -236,7 +236,7 @@ input {
 }
 
 /* responsive */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1200px) {
     .overlay-container {
         display: none;
     }
@@ -276,5 +276,4 @@ input {
         display: inline;
         margin-bottom: -10px;
     }
-    
 }

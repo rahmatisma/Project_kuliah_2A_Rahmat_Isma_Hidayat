@@ -12,7 +12,7 @@ include "connect.php";
             if ($_SESSION['level_user'] == 6 || $_SESSION['level_user'] == 5) {
                 header('Location:../home');
             } else if ($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
-                header('Location:../dasboard');
+                header('Location:../dashboard');
             }
             
         } else { ?>
