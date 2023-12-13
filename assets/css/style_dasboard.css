@@ -192,11 +192,6 @@ aside .sidebar a span {
     transition: all 300ms ease;
 }
 
-/* aside .sidebar a:last-child {
-    position: absolute;
-    bottom: 2rem;
-    width: 100%;
-} */
 
 aside .sidebar a.active {
     background-color: var(--color-light);
@@ -487,11 +482,6 @@ main a {
     aside .sidebar a {
         width: 5.6rem;
     }
-
-    /* aside .sidebar a:last-child {
-        position: relative;
-        margin-top: 1.8rem;
-    } */
 
     main .insights {
         grid-template-columns: 1fr;
