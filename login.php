@@ -1,11 +1,11 @@
-<?php 
-    session_start();
-    if(!empty($_SESSION['username_TLine'])){
-        header('location: Home');
-        if($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
-            header('location: dasboard');
-        }
+<?php
+session_start();
+if (!empty($_SESSION['username_TLine'])) {
+    header('location: Home');
+    if ($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
+        header('location: dasboard');
     }
+}
 
 
 ?>
@@ -81,7 +81,7 @@
                         Masukkan Password.
                     </div>
                 </div>
-                <button type="submit" name="login_validate" value="123" >Sign In</button>
+                <button type="submit" name="login_validate" value="123">Sign In</button>
                 <p class="button-responsive">Anda belum memiliki akun? <a href="#"><b id="signUpRes">Register</b></a></p>
             </form>
         </div>
@@ -102,6 +102,13 @@
             </div>
         </div>
     </div>
+    <div class="keterangan">
+        <h5>pengguna name : rahmat@gmail.com</h6>
+        <h5>pengguna password : 123</h5>
+        <h5>Admin name : agung@gmail.com</h5>
+        <h5>Admin password : 123</h5>
+    </div>
+
 
     <!-- Js Login -->
     <script src="/assets/js/login.js"></script>

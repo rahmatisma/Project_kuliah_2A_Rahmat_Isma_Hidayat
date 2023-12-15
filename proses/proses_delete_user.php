@@ -8,7 +8,8 @@
             $message = '<script>alert("Data berhasil dihapus");
                         window.location="../User"</script>';
         } else {
-            $message = '<script>alert("Data gagal dihapus")</script>';
+            $message = '<script>alert("Data gagal dihapus");
+                        window.location="../User"</script>';
         }
     } echo $message;
 ?>

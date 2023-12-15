@@ -69,7 +69,7 @@ if (!empty($_POST['input_film_validate'])) {
         $message = '<script>alert("'.$message.', Gambar tidak dapat diupload");
                     window.location="../Film"</script>';
     } else {
-        $select = mysqli_query($conn, "SELECT * FROM tb_film WHERE nama_film = '$nama_film' AND id_film != '$id'");
+        $select = mysqli_query($conn, "SELECT * FROM tb_film WHERE nama_film = '$nama_film' AND id_film != '$id_film'");
         if (mysqli_num_rows($select) > 0) {
             $message = '<script>alert("Nama Film yang dimasukkan telah ada");
                         window.location="../Film"</script>';

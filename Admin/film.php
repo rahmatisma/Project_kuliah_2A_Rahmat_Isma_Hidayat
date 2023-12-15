@@ -356,24 +356,19 @@ while ($record = mysqli_fetch_array($query)) {
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data User</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data Film</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_delete_user.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <form form class="needs-validation" novalidate action="../proses/proses_delete_film.php" method="post">
+                                    <input type="hidden" value="<?php echo $row['id_film'] ?>" name="id_film">
+                                    <input type="hidden" value="<?php echo $row['foto'] ?>" name="foto">
                                     <div class="col-lg-12">
-                                        <?php
-                                        if ($row['username'] == $_SESSION['username_TLine']) {
-                                            echo "<div class='alert alert-danger'>Anda Tidak dapat menghapus akun sendiri</div>";
-                                        } else {
-                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
-                                        }
-                                        ?>
+                                        Apakah anda ingin menghapus film <b><?php echo $row['nama_film'] ?></b>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        <button type="submit" class="btn btn-danger" name="input_film_validate" value="12345">Hapus</button>
                                     </div>
                                 </form>
                             </div>
@@ -431,7 +426,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td>
                                         <?php echo $row['durasi'] ?>
                                     </td>
-                                    <td class="">
+                                    <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_film'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_film'] ?>"><i class="bi bi-pencil-square"></i></i></button>
                                         <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_film'] ?>"><i class="bi bi-trash"></i></i></button>
