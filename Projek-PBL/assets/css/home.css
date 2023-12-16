@@ -1,0 +1,22 @@
+body {
+    height: 10000px;
+    background-color: #ECE5D1;
+}
+
+.header_content {
+    background-position: center;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(https://media.21cineplex.com/webcontent/gallery/pictures/148039134535987_1024x683.jpg);
+    color: white;
+}
+
+.container {
+    padding: 50px;
+    background-color: #FDF8E8;
+    border-radius: 10px;
+}
