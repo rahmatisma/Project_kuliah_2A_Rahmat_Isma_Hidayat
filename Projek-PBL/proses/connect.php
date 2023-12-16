@@ -3,4 +3,3 @@
     if(!$conn) {
         echo "gagal koneksi";
     }
-?>
