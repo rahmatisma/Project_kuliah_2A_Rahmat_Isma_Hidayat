@@ -115,7 +115,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_edit_user.php" method="post">
+                                <form form class="needs-validation" novalidate action="../proses/proses_edit_ticket.php" method="post">
                                 <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
                                 <div class="form-group">
                                     <div class="row">
@@ -126,14 +126,14 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                                 <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <span class="visually-hidden">Toggle Dropdown</span>
                                                 </button>
-                                                <ul class="dropdown-menu" id="dropdownFilm">
+                                                <ul class="dropdown-menu" id="dropdownFilm" <?php echo $row['id_ticket']; ?>>
                                                     <?php
                                                     foreach ($select_film as $value) {
-                                                        echo "<li><a class='dropdown-item'>$value[id_film]</a></li>";
+                                                        echo "<li><a class='dropdown-item'>$value[nama_film]</a></li>";
                                                     }
                                                     ?>
                                                 </ul>
-                                                <input type="text" class="form-control" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Film" name="nama_film" required>
+                                                <input type="text" class="form-control" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Film" name="nama_film" value="<?php echo $row['nama_film'] ?>" required>
                                                 <div class="invalid-feedback">
                                                     Masukkan Film.
                                                 </div>
@@ -149,12 +149,12 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                                 </button>
                                                 <ul class="dropdown-menu" id="dropdownTheater">
                                                     <?php
-                                                    foreach ($select_theater as $row) {
-                                                        echo "<li><a class='dropdown-item'>$row[id_theater]</a></li>";
+                                                    foreach ($select_theater as $value) {
+                                                        echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
                                                     }
                                                     ?>
                                                 </ul>
-                                                <input type="text" class="form-control" id="Inputtheater" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php $row['id_theater'] ?>" required>
+                                                <input type="text" class="form-control" id="Inputtheater" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
                                                 <div class="invalid-feedback">
                                                     Masukkan Nama Theater.
                                                 </div>
@@ -164,7 +164,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-floating mb-3">
-                                                <input type="time" class="form-control" id="floatingInput" placeholder="Jam Tayang" name="jam_tayang" required>
+                                                <input type="time" class="form-control" id="floatingInput" placeholder="Jam Tayang" name="jam_tayang" value="<?php echo $row['jam_tayang'] ?>" required>
                                                 <label for="floatingInput">Jam Tayang</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan Jam Tayang.
@@ -189,24 +189,20 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data User</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data Ticket</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_delete_user.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <form form class="needs-validation" novalidate action="../proses/proses_delete_ticket.php" method="post">
+                                    <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
                                     <div class="col-lg-12">
                                         <?php
-                                        if ($row['username'] == $_SESSION['username_TLine']) {
-                                            echo "<div class='alert alert-danger'>Anda Tidak dapat menghapus akun sendiri</div>";
-                                        } else {
-                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
-                                        }
+                                            echo "Apakah anda yakin ingin menghapus ticket <b>$row[nama_film]</b> di theater <b>$row[theater]</b> pada jam <b>$row[jam_tayang]</b>?";
                                         ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        <button type="submit" class="btn btn-danger" name="input_ticket_validate" value="12345">Hapus</button>
                                     </div>
                                 </form>
                             </div>
