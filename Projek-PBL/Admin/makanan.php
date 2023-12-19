@@ -1,9 +1,15 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_user");
+$query = mysqli_query($conn, "SELECT * FROM tb_menu
+        LEFT JOIN tb_kategori_menu ON tb_kategori_menu.id_kat = tb_menu.kategori
+        LEFT JOIN tb_theaters ON tb_theaters.nama_theater = tb_menu.nama_theater");
+
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
+
+$select_kat_menu = mysqli_query($conn, "SELECT id_kat,kategori_menu FROM tb_kategori_menu");
+$select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_theaters");
 ?>
 <div class="col-lg-12 mt-2">
     <div class="card">
@@ -16,84 +22,114 @@ while ($record = mysqli_fetch_array($query)) {
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"> Tambah Makanan</button>
                 </div>
             </div>
-            <!-- Modal tambah user baru -->
+            <!-- Modal tambah Menu baru -->
             <div class="modal fade" id="ModalTambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah User</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Menu Makanan dan Minuman</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form form class="needs-validation" novalidate action="../proses/proses_input_user.php" method="post">
+                            <form class="needs-validation" novalidate action="../proses/proses_input_menu.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingInput" placeholder="Your name" name="nama" required>
-                                            <label for="floatingInput">Nama</label>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control py-3" id="uploadFoto" placeholder="Foto" name="foto" required>
+                                            <label class="input-group-text" for="uploadFoto">Upload Foto Menu</label>
                                             <div class="invalid-feedback">
-                                                Masukkan Nama.
+                                                Masukkan File Foto Makanan.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required>
-                                            <label for="floatingInput">Username</label>
+                                        <div class="input-group mb-3">
+                                            <button type="button" class="btn btn-outline-secondary">Pilihan Film</button>
+                                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" id="dropdownFilm">
+                                                <?php
+                                                foreach ($select_theater as $value) {
+                                                    echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                            <input type="text" class="form-control py-3" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" required>
                                             <div class="invalid-feedback">
-                                                Masukkan Username.
+                                                Masukkan Nama Theater.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <select class="form-select" aria-label="Default select example" name="level" required>
-                                                <option selected hidden value="">Pilih Lever User</option>
-                                                <option value="2">administrators</option>
-                                                <option value="3">Operator</option>
-                                                <option value="4">Kasir</option>
-                                                <option value="5">Member</option>
-                                                <option value="6">Pengguna Terdaftar</option>
+                                            <input type="text" class="form-control" id="floatingInput" placeholder="Nama film" name="nama_menu" required>
+                                            <label for="floatingInput">Nama Menu</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Nama Menu.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="floatingInput" placeholder="jenis film" name="harga" required>
+                                            <label for="floatingInput">Harga</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Harga Menu.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" aria-label="Default select example" name="kat_menu" required>
+                                                <option selected hidden value="">Pilih Kategori Menu</option>
+                                                <?php
+                                                foreach ($select_kat_menu as $value) {
+                                                    echo "<option value=" . $value['id_kat'] . ">$value[kategori_menu]</option>";
+                                                }
+                                                ?>
                                             </select>
-                                            <label for="floatingInput">Level User</label>
+                                            <label for="floatingInput">Kategori Makanan atau Minuman</label>
                                             <div class="invalid-feedback">
-                                                Pilih Level User.
+                                                Pilih Kategori Makanan atau Minuman.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp">
-                                            <label for="floatingInput">No HP</label>
+                                            <input type="number" class="form-control" id="floatingInput" placeholder="Stok" name="stok" required>
+                                            <label for="floatingInput">Stok</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Stok Menu.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="floatingInput" placeholder="Password" disabled name="password">
-                                            <label for="floatingPassword">Password</label>
-                                        </div>
-                                    </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="" style="height: 100px;" name="keterangan"></textarea>
+                                    <label for="floatingInput">Keterangan</label>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Save changes</button>
+                                    <button type="submit" class="btn btn-primary" name="input_menu_validate" value="12345">Save changes</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Akhir modal tambah user baru  -->
+            <!-- Akhir modal tambah Film baru  -->
 
             <?php
             foreach ($result as $row) {
             ?>
                 <!-- Modal view-->
-                <div class="modal fade" id="ModalView<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalView<?php echo $row['id_menu'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -103,54 +139,51 @@ while ($record = mysqli_fetch_array($query)) {
                             <div class="modal-body">
                                 <form form class="needs-validation" novalidate action="proses/proses_input_user.php" method="post">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="form-floating mb-3">
-                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Your name" name="nama" value="<?php echo $row['nama'] ?>">
-                                                <label for="floatingInput">Nama</label>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Nama.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-floating mb-3">
-                                                <input disabled type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" value="<?php echo $row['username'] ?>">
-                                                <label for="floatingInput">Username</label>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Username.
-                                                </div>
+                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Nama Theater" name="nama_theater" value="<?php echo $row['nama_theater'] ?>">
+                                                <label for="floatingInput">Nama theater</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" aria-label="Default selecct example" required name="level" id="" disabled>
-                                                    <?php
-                                                    $data = array("administrators", "Operator", "Kasir", "Member", "Pengguna Terdaftar");
-                                                    foreach ($data as $key => $value) {
-                                                        if ($row['level'] == $key + 1) {
-                                                            echo "<option selected value = '$key'>$value</option>";
-                                                        } else {
-                                                            echo "<option value = '$key'>$value</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <label for="floatingInput">Level User</label>
-                                                <div class="invalid-feedback">
-                                                    Pilih Level User.
-                                                </div>
+                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Nama film" name="nama_menu" value="<?php echo $row['nama_menu'] ?>">
+                                                <label for="floatingInput">Nama Menu</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input disabled type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp" value="<?php echo $row['nohp'] ?>">
-                                                <label for="floatingInput">No HP</label>
+                                                <input disabled type="number" class="form-control" id="floatingInput" placeholder="jenis film" name="harga" value="<?php echo $row['harga'] ?>">
+                                                <label for="floatingInput">Harga</label>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-3">
+                                                <select disabled class="form-select" aria-label="Default select example" name="kat_menu" value="<?php echo $row['kategori'] ?>">
+                                                    <?php
+                                                    foreach ($select_kat_menu as $value) {
+                                                        echo "<option value=" . $value['id_kat'] . ">$value[kategori_menu]</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <label for="floatingInput">Kategori Makanan atau Minuman</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-3">
+                                                <input disabled type="number" class="form-control" id="floatingInput" placeholder="Stok" name="stok" value="<?php echo $row['stok'] ?>">
+                                                <label for="floatingInput">Stok</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea disabled class="form-control" id="" style="height: 100px;" name="keterangan"><?php echo $row['keterangan'] ?></textarea>
+                                        <label for="floatingInput">Keterangan</label>
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
@@ -162,7 +195,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir modal View -->
 
                 <!-- Modal Edit-->
-                <div class="modal fade" id="ModalEdit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalEdit<?php echo $row['id_menu'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -170,59 +203,91 @@ while ($record = mysqli_fetch_array($query)) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_edit_user.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <form form class="needs-validation" novalidate action="../proses/proses_edit_menu.php" method="post">
+                                    <input type="hidden" value="<?php echo $row['id_menu'] ?>" name="id">
+                                    <input type="hidden" name="foto_lama" value="<?php echo $row['foto_menu']; ?>">
+                                    <?php echo $row['foto_menu']; ?>
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="floatingInput" placeholder="Your name" name="nama" required value="<?php echo $row['nama'] ?>">
-                                                <label for="floatingInput">Nama</label>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Nama.
-                                                </div>
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control py-3" id="uploadFoto" placeholder="Foto" name="foto">
+                                                <label class="input-group-text" for="uploadFoto">Upload Foto Menu</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-3">
-                                                <input <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?> type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required value="<?php echo $row['username'] ?>">
-                                                <label for="floatingInput">Username</label>
+                                            <div class="input-group mb-3">
+                                                <button type="button" class="btn btn-outline-secondary">Pilihan Film</button>
+                                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" id="dropdownFilm">
+                                                    <?php
+                                                    foreach ($select_theater as $value) {
+                                                        echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
+                                                    }
+                                                    ?>
+                                                </ul>
+                                                <input type="text" class="form-control py-3" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Username.
+                                                    Masukkan Nama Theater.
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" aria-label="Default selecct example" required name="level" id="">
+                                                <input type="text" class="form-control" id="floatingInput" placeholder="Nama Menu" name="nama_menu" value="<?php echo $row['nama_menu'] ?>" required>
+                                                <label for="floatingInput">Nama Menu</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Nama Menu.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="floatingInput" placeholder="jenis film" name="harga" value="<?php echo $row['harga'] ?>" required>
+                                                <label for="floatingInput">Harga</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Harga Menu.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" aria-label="Default select example" name="kat_menu" value="<?php echo $row['kategori'] ?>" required>
                                                     <?php
-                                                    $data = array("administrators", "Operator", "Kasir", "Member", "Pengguna Terdaftar");
-                                                    foreach ($data as $key => $value) {
-                                                        if ($row['level'] == $key + 1) {
-                                                            echo "<option selected value =" . ($key + 1) . ">$value</option>";
-                                                        } else {
-                                                            echo "<option value = " . ($key + 1) . ">$value</option>";
-                                                        }
+                                                    foreach ($select_kat_menu as $value) {
+                                                        echo "<option value=" . $value['id_kat'] . ">$value[kategori_menu]</option>";
                                                     }
                                                     ?>
                                                 </select>
-                                                <label for="floatingInput">Level User</label>
+                                                <label for="floatingInput">Kategori Makanan atau Minuman</label>
                                                 <div class="invalid-feedback">
-                                                    Pilih Level User.
+                                                    Pilih Kategori Makanan atau Minuman.
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp" value="<?php echo $row['nohp'] ?>">
-                                                <label for="floatingInput">No HP</label>
+                                                <input type="number" class="form-control" id="floatingInput" placeholder="Stok" name="stok" value="<?php echo $row['stok'] ?>" required>
+                                                <label for="floatingInput">Stok</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Stok Menu.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="" style="height: 100px;" name="keterangan"><?php echo $row['keterangan'] ?>"</textarea>
+                                        <label for="floatingInput">Keterangan</label>
+                                    </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Save changes</button>
+                                        <button type="submit" class="btn btn-primary" name="input_menu_validate" value="12345">Save changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -232,7 +297,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir modal Edit-->
 
                 <!-- Modal Delete-->
-                <div class="modal fade" id="ModalDelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalDelete<?php echo $row['id_menu'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -262,36 +327,6 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
                 <!-- Akhir modal Delete-->
 
-                <!-- Modal Reset Password-->
-                <div class="modal fade" id="ModalResetPassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-md modal-fullscreen-md-down">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_reset_password.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
-                                    <div class="col-lg-12">
-                                        <?php
-                                        if ($row['username'] == $_SESSION['username_TLine']) {
-                                            echo "<div class='alert alert-danger'>Anda Tidak dapat mereset password sendiri</div>";
-                                        } else {
-                                            echo "Apakah anda yakin ingin mereset password user <b>$row[username]</b> menjadi password bawaan sistem yaitu <b>password</b>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?>>Reset Password</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Akhir Reset Password-->
             <?php
             }
             ?>
@@ -307,11 +342,10 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Level</th>
-                                <th scope="col">No HP</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Nama Menu</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Kategori</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -324,36 +358,31 @@ while ($record = mysqli_fetch_array($query)) {
                                         <?php echo $no++ ?>
                                     </th>
                                     <td>
-                                        <?php echo $row['nama'] ?>
+                                        <div style="width: 90px">
+                                            <img src="../assets/img/makanan/<?php echo $row['foto_menu'] ?>" class="img-fluid" alt="...">
+                                        </div>
                                     </td>
                                     <td>
-                                        <?php echo $row['username'] ?>
+                                        <?php echo $row['nama_menu'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['harga'] ?>
                                     </td>
                                     <td>
                                         <?php
-                                        if ($row['level'] == 1) {
-                                            echo "Super Admin";
-                                        } elseif ($row['level'] == 2) {
-                                            echo "administrators";
-                                        } elseif ($row['level'] == 3) {
-                                            echo "Operator";
-                                        } elseif ($row['level'] == 4) {
-                                            echo 'Kasir';
-                                        } elseif ($row['level'] == 5) {
-                                            echo 'Member';
-                                        } elseif ($row['level'] == 6) {
-                                            echo 'Pengguna Terdaftar';
+                                        if ($row['jenis_menu'] == 1) {
+                                            echo "Makanan";
+                                        } else if ($row['jenis_menu'] == 2) {
+                                            echo "Minuman";
+                                        } else {
+                                            echo "Paket";
                                         }
                                         ?>
                                     </td>
-                                    <td>
-                                        <?php echo $row['nohp'] ?>
-                                    </td>
                                     <td class="d-flex">
-                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id'] ?>"><i class="bi bi-pencil-square"></i></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id'] ?>"><i class="bi bi-trash"></i></i></button>
-                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalResetPassword<?php echo $row['id'] ?>"><i class="bi bi-key"></i></i></button>
+                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_menu'] ?>"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_menu'] ?>"><i class="bi bi-pencil-square"></i></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_menu'] ?>"><i class="bi bi-trash"></i></i></button>
                                     </td>
                                 </tr>
                             <?php
@@ -389,4 +418,47 @@ while ($record = mysqli_fetch_array($query)) {
             }, false)
         })
     })()
+</script>
+
+<!-- Skrip JavaScript untuk pencarian otomatis -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menyaring film berdasarkan input
+        document.getElementById("Inputfilm").addEventListener("input", function() {
+            filterDropdown("Inputfilm", "dropdownFilm");
+        });
+
+        // Pilih film yang diklik
+        document.querySelectorAll("#dropdownFilm a").forEach(function(item) {
+            item.addEventListener("click", function() {
+                document.getElementById("Inputfilm").value = this.textContent;
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menyaring theater berdasarkan input
+        document.getElementById("Inputtheater").addEventListener("input", function() {
+            filterDropdown("Inputtheater", "dropdownTheater");
+        });
+
+        // Pilih theater yang diklik
+        document.querySelectorAll("#dropdownTheater a").forEach(function(item) {
+            item.addEventListener("click", function() {
+                document.getElementById("Inputtheater").value = this.textContent;
+            });
+        });
+    });
+
+    // Fungsi untuk menyaring dropdown
+    function filterDropdown(inputId, dropdownId) {
+        var value = document.getElementById(inputId).value.toLowerCase();
+        var dropdown = document.getElementById(dropdownId);
+
+        // Menyaring opsi dropdown berdasarkan input
+        Array.from(dropdown.children).forEach(function(item) {
+            var optionText = item.textContent.toLowerCase();
+            item.style.display = optionText.includes(value) ? 'block' : 'none';
+        });
+    }
 </script>
