@@ -6,7 +6,7 @@ if (!empty($_SESSION['username_TLine'])) {
     $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_TLine]'");
     $hasil = mysqli_fetch_array($query);
     if ($_SESSION['level_user'] == 6 || $_SESSION['level_user'] == 5) {
-        header('Location:../home');
+        header('Location:../Home');
     }
 } else {
     header('location:login');

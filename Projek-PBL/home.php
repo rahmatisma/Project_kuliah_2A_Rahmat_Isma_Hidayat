@@ -111,7 +111,7 @@ $nama_film = mysqli_query($conn, "SELECT DISTINCT nama_film FROM tb_ticket");
                                 <div class='card-body'>
                                     <h6 class='card-title p'><b>$nama_film</b></h6>
                                     <hr>
-                                    <a href='' class='btn btn-primary d-grid'>Get Ticket</a>
+                                    <a href='/?x=DetailFilm&Home= $film[id_film]'&meja='$film[nama_film]' class='btn btn-primary d-grid'>Get Ticket</a>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ $nama_film = mysqli_query($conn, "SELECT DISTINCT nama_film FROM tb_ticket");
                                 <div class='card-body'>
                                     <h6 class='card-title p'><b>$nama_film2</b></h6>
                                     <hr>
-                                    <a href='' class='btn btn-primary d-grid'>Info </a>
+                                    <a href='/?x=DetailUpcoming&Upcoming= $film[id_film]'&meja='$film[nama_film]' class='btn btn-primary d-grid'>Info </a>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +174,29 @@ $nama_film = mysqli_query($conn, "SELECT DISTINCT nama_film FROM tb_ticket");
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 text-center mt-5">
-                    <a href="/Page Upcoming/Upcoming.html" class="movie-load-more">View More</a>
+                    <a href="/Upcoming" class="movie-load-more">View More</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navbarSearchForm = document.getElementById('navbarSearchForm');
+            var headerSearchForm = document.getElementById('headerSearchForm');
+
+            window.addEventListener('scroll', function() {
+                var scrollPosition = window.scrollY;
+
+                // Jika scroll di bawah batas tertentu, sembunyikan form pencarian di navbar
+                if (scrollPosition > 150) {
+                    navbarSearchForm.style.display = 'flex';
+                } else {
+                    navbarSearchForm.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 

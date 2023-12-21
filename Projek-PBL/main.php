@@ -38,64 +38,8 @@ if (!empty($_SESSION['username_TLine'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var navbarSearchForm = document.getElementById('navbarSearchForm');
-            var headerSearchForm = document.getElementById('headerSearchForm');
-
-            window.addEventListener('scroll', function() {
-                var scrollPosition = window.scrollY;
-
-                // Jika scroll di bawah batas tertentu, sembunyikan form pencarian di navbar
-                if (scrollPosition > 150) {
-                    navbarSearchForm.style.display = 'flex';
-                } else {
-                    navbarSearchForm.style.display = 'none';
-                }
-            });
-        });
-    </script>
+    
 </body>
-
-<!-- <footer>
-    <div class="footer-container mt-5">
-        <div id="footer_content" class="row">
-            <div id="footer_contacts" class="col-md-4 text-center">
-                <p><strong>Partner Kami</strong></p>
-                <div>
-                    <img src="./assets/img/sejahtera_v.png" alt="" width="250" height="60">
-                    <p>Kunjungi Sosial Media Kami!</p>
-                </div>
-                <div id="footer_social_media">
-                    <a href="#" class="footer-link" id="instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="#" class="footer-link" id="facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#" class="footer-link" id="whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h4 class="text-center">Kontak Kami</h4>
-                <ul class="text-center">
-                    <li>Alamat: Jln. Iskandar Muda No. 1-6, blang pidie</li>
-                    <li>Email: e-swalayan@gmail.com</li>
-                    <li>Telepon: 021-6556</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom ">
-        <div class="footer-content">
-            <p>&copy; 2023 E-Swalayan. Hak Cipta Dilindungi.</p>
-        </div>
-    </div>
-</footer> -->
 
 <!--Footer-->
 <footer class="footer-custom">
@@ -120,19 +64,23 @@ if (!empty($_SESSION['username_TLine'])) {
 
             <div class="col-lg-4 col-md-6 col-sm-12 mt-5 offset-lg-4">
                 <h3>Kritik Dan Aduan</h3>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ketik Alamat Emailmu...">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Pesan</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="btn btn-success d-block"> Kirim</div>
+                <form class="needs-validation" novalidate action="proses/proses_input_feedback.php" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="nama">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ketik Alamat Emailmu..." name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Pesan</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="feedback"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" name="input_feedback_validate" value="12345">Kirim</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="footer-bottom ">

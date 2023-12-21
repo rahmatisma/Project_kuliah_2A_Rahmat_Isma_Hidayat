@@ -1,3 +1,18 @@
+<?php
+include "proses/connect.php";
+
+$data = mysqli_query($conn, "SELECT COUNT(*) as total_unread FROM tb_feedback WHERE status = 1");
+
+// Periksa apakah query berhasil dijalankan
+if ($data) {
+    $total = mysqli_fetch_assoc($data);
+    $total_status = $total['total_unread'];
+} else {
+    // Handle error jika query gagal
+    $total_status = 0; // Atau Anda bisa menetapkan nilai default lainnya sesuai kebutuhan
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,68 +47,68 @@
 
         <!-- sidebar -->
         <div class="sidebar">
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'dasboard') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="dasboard">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'dasboard') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="dasboard">
                 <span class="material-symbols-outlined">
                     dashboard
                 </span>
                 <h3>Dashboard</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Ticket') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Ticket">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Ticket') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Ticket">
                 <span class="material-symbols-outlined">
                     local_activity
                 </span>
                 <h3>Ticket</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Film') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Film">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Film') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Film">
                 <span class="material-symbols-outlined">
                     movie
                 </span>
                 <h3>Film</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Berita') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Berita">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Berita') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Berita">
                 <span class="material-symbols-outlined">
                     breaking_news
                 </span>
                 <h3>Berita</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'PromoAdmin') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="PromoAdmin">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'PromoAdmin') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="PromoAdmin">
                 <span class="material-symbols-outlined">
                     shopping_bag
                 </span>
                 <h3>Promo</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Makanan') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Makanan">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Makanan') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Makanan">
                 <span class="material-symbols-outlined">
                     restaurant_menu
                 </span>
                 <h3>Makanan</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Theater') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Theater">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Theater') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Theater">
                 <span class="material-symbols-outlined">
                     theaters
                 </span>
                 <h3>Theater</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'User') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="User">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'User') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="User">
                 <span class="material-symbols-outlined">
                     person_outline
                 </span>
                 <h3>User</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Messages') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Messages">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Messages') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Messages">
                 <span class="material-symbols-outlined">
                     mail
                 </span>
                 <h3>Messages</h3>
-                <span class="message-count">26</span>
+                <span class="message-count" style="display: <?php echo ( $total_status == 0) ? 'none' : '';?>;" ><?php echo $total_status ?></span>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Orders') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Orders">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Orders') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Orders">
                 <span class="material-symbols-outlined">
                     receipt_long
                 </span>
                 <h3>Orders</h3>
             </a>
-            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Report') || !isset($_GET['x'])) ? 'active' : '' ; ?>" href="Report">
+            <a class="<?php echo ((isset($_GET['x']) && $_GET['x'] == 'Report') || !isset($_GET['x'])) ? 'active' : ''; ?>" href="Report">
                 <span class="material-symbols-outlined">
                     summarize
                 </span>
@@ -108,4 +123,5 @@
         </div>
     </aside>
 </body>
+
 </html>

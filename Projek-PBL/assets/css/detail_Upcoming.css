@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+/* body */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    padding-top: 70px;
+}
+
+/* navbar */
+.navbar {
+    background-color: #b7c88e;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    color: #000;
+}
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu :hover {
+    background: #fff;
+    color: #162938;
+    background-color: #b7c88e;
+}
+
+.container {
+    padding: 50px;
+    background-color: #fdf8e8;
+    border-radius: 10px;
+}
+
+.hover-underline {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline::after {
+    cursor: pointer;
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.row .foto-film {
+    margin-left: 100px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.movie-content .age {
+    margin-top: -15px;
+}
+
+.kiri .tombol-tiket a {
+    text-decoration: none;
+    color: #000;
+    border: 1px black solid;
+    padding: 5px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    margin-left: 200px;
+    background-color: #b7c88e;
+}
+
+ul.desc-movie {
+    list-style: none;
+}
+
+ul.desc-movie li {
+    list-style: none;
+}
+
+.desc-movie span {
+    white-space: nowrap;
+    margin-left: -30px;
+}
+
+#check {
+    display: none;
+}
+
+.content {
+    display: none;
+    transition: 0.5s linear;
+}
+
+label {
+    display: none;
+    margin-top: 10px;
+    color: rgb(81, 38, 190);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#check:checked~.content {
+    display: block;
+}
+
+#check:checked~label {
+    visibility: hidden;
+}
+
+#check:checked~label:after {
+    content: 'Show less';
+    display: block;
+    visibility: visible;
+}
+
+.tanggal ul,
+li {
+    list-style: none;
+}
+
+.tanggal {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 900px;
+}
+
+.list-tanggal li {
+    padding: 20px;
+}
+
+.bulan-tanggal {
+    text-align: center;
+    font-size: 18px;
+}
+
+.hari {
+    font-size: 14px;
+    text-align: center;
+}
+
+.hari-weekend {
+    font-size: 14px;
+}
+
+.search-container .form-control {
+    width: 800px;
+    border-radius: 60px;
+}
+
+.card {
+    width: 800px;
+}
+
+.collapse:not(.show) {
+    display: none;
+}
+
+.theater-img {
+    border: 1px solid rgb(72, 68, 68);
+    border-radius: 10px;
+    margin: auto;
+    width: 100px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px black;
+}
+
+.hover {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.hover::after {
+    cursor: pointer;
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: rgb(95, 110, 204);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover.selected::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.hover.selected .tgl-link {
+    color: rgb(95, 110, 204);
+}
+
+.jam-tersedia {
+    padding: 20px;
+    
+}
+
+.tombol-jam {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.list-jam {
+    margin-left: 100px;
+}
+
+.tombol-jam:hover {
+    background-color: rgb(113, 113, 226);
+    color: #eaeaea;
+}
+
+/* layar hp */
+@media screen and (max-width: 500px) {
+    .row .foto-film {
+        margin-left: 0;
+        border-radius: 10px;
+        width: 350px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .kiri .tombol-tiket a {
+        text-decoration: none;
+        color: #000;
+        border: 1px black solid;
+        padding: 5px;
+        border-radius: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 350px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .movie-content {
+        margin: 10px;
+    }
+
+    .search-container .form-control {
+        width: 200px;
+        border-radius: 60px;
+    }
+
+
+    .card {
+        width: 300px;
+    }
+
+    .theater-img {
+        border: 1px solid rgb(72, 68, 68);
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 20px;
+        width: 100px;
+        padding: 10px;
+        box-shadow: 0px 2px 4px black;
+    }
+
+    .pemilihan-tanggal .tanggal {
+        list-style-type: none;
+        margin-left: 0;
+        width: 350px;
+    }
+
+}
+
+/* layar tab */
+@media screen and (min-width: 768px) {
+    .row .foto-film {
+        margin-left: 0;
+        border-radius: 10px;
+        width: 650px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .kiri .tombol-tiket a {
+        text-decoration: none;
+        color: #000;
+        border: 1px black solid;
+        padding: 5px;
+        border-radius: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 650px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+
+    .movie-content {
+        margin: 20px;
+    }
+
+    .search-container .form-control {
+        width: 500px;
+        border-radius: 60px;
+    }
+
+    .card {
+        width: 600px;
+    }
+
+    .pemilihan-tanggal .tanggal {
+        list-style-type: none;
+        margin-left: 20px;
+        width: 650px;
+    }
+
+
+
+}
+
+/* dekstop */
+@media screen and (min-width: 1024px) {
+    .row .foto-film {
+        margin-left: 0;
+        border-radius: 10px;
+        width: 300px;
+        display: block;
+        margin-left: 70px;
+        margin-right: auto;
+    }
+
+    .kiri .tombol-tiket a {
+        text-decoration: none;
+        color: #000;
+        border: 1px black solid;
+        padding: 5px;
+        border-radius: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        display: block;
+        margin-left: 140px;
+        margin-right: auto;
+
+    }
+
+    .card {
+        width: 800px;
+    }
+
+    .pemilihan-tanggal .tanggal {
+        list-style-type: none;
+        margin-left: 100px;
+        width: 900PX;
+    }
+
+}

@@ -5,6 +5,12 @@
     } else if (isset($_GET['x']) && $_GET['x'] == 'Upcoming') {
         $page = "Upcoming.php";
         include "main.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'DetailUpcoming') {
+        $page = "detail_upcoming.php";
+        include "main.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'DetailFilm') {
+        $page = "detail_film.php";
+        include "main.php";
     } else if (isset($_GET['x']) && $_GET['x'] == 'Theaters') {
         $page = "Theaters.php";
         include "main.php";

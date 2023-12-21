@@ -47,8 +47,7 @@ if (!empty($_POST['input_film_validate'])) {
         }
     } else {
         // Gunakan foto lama
-        $kode_rand = substr($foto_lama, 0, 6); // Ambil kode_rand dari foto lama
-        $target_file = $target_dir . $kode_rand . basename($_FILES['foto']['name']);
+        $target_file = $foto_lama;
     }
 
     if ($statusUpload == 0) {

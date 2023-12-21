@@ -10,9 +10,9 @@ include "connect.php";
             $_SESSION['username_TLine'] = $username;
             $_SESSION['level_user'] = $hasil['level'];
             if ($_SESSION['level_user'] == 6 || $_SESSION['level_user'] == 5) {
-                header('Location:../home');
+                header('Location:../Home');
             } else if ($_SESSION['level_user'] != 6 || $_SESSION['level_user'] != 5) {
-                header('Location:../dashboard');
+                header('Location:../dasboard');
             }
             
         } else { ?>

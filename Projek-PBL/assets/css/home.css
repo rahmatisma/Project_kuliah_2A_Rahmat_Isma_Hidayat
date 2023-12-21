@@ -156,16 +156,6 @@ body {
     background-color: #b7c88e;
 }
 
-/* footer {
-    background-image: url(../../foter.svg);
-    background-position: fixed center;
-    background-size: cover;
-    display: flex;
-    width: auto;
-    padding-top: 100px;
-    height: 400px;
-} */
-
 footer {
     width: 100%;
     background-image: url(../../foter.svg);
