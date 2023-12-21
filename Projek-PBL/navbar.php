@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-secondary sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href=".">Navbar</a>
+                <img src="../assets/img/logo/Screenshot 2023-11-18 105415.png" style="width: 3.5rem;" class="mx-3">
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,6 +33,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-underline <?php echo (isset ($_GET['x']) && $_GET['x'] == 'Theaters') ? 'active' : '' ?>" href="Theaters">Theaters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hover-underline <?php echo (isset ($_GET['x']) && $_GET['x'] == 'Menu') ? 'active' : '' ?>" href="Menu">Snack</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

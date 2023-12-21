@@ -20,8 +20,8 @@
     <aside>
         <div class="top">
             <div class="logo">
-                <img src="/Login admin/Lebah ganteng - Copy.webp" alt="">
-                <h2>Lebah <span class="danger">Ganteng</span></h2>
+                <img src="../assets/img/logo/Screenshot 2023-11-18 105415.png" alt="">
+                <h2>T-<span class="danger">Line</span></h2>
             </div>
             <div class="close" id="close-btn">
                 <span class="material-symbols-outlined">

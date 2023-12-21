@@ -16,11 +16,20 @@
             </div>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Daniel</b></p>
-                    <small class="text-muted">Admin</small>
-                </div>
-                <div class="profile-photo">
-                    <img src="/Lebah ganteng.webp">
+                    <p>Hey, <b><?php echo $hasil['nama'] ?></b></p>
+                    <small class="text-muted">
+                        <?php
+                        if ($hasil['level'] == 1) {
+                            echo "Super Admin";
+                        } elseif ($hasil['level'] == 2) {
+                            echo "administrators";
+                        } elseif ($hasil['level'] == 3) {
+                            echo "Operator";
+                        } elseif ($hasil['level'] == 4) {
+                            echo 'Kasir';
+                        }
+                        ?>
+                    </small>
                 </div>
             </div>
         </div>

@@ -18,7 +18,8 @@ if (!empty($_SESSION['username_TLine'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin T-Line</title>
+    <link rel="icon" href="../assets/img/logo/Screenshot 2023-11-18 105415.png" type="image/png">
 
     <!-- bosstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">

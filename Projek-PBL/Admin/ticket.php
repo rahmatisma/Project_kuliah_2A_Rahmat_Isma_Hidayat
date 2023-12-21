@@ -34,7 +34,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                         </div>
                         <div class="modal-body">
                             <form form class="needs-validation" novalidate action="../proses/proses_input_ticket.php" method="post">
-                            <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
+                                <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
                                 <div class="form-group">
                                     <div class="row">
                                         <!-- Bagian Film -->
@@ -67,8 +67,8 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                                 </button>
                                                 <ul class="dropdown-menu" id="dropdownTheater">
                                                     <?php
-                                                    foreach ($select_theater as $row) {
-                                                        echo "<li><a class='dropdown-item'>$row[nama_theater]</a></li>";
+                                                    foreach ($select_theater as $value) {
+                                                        echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
                                                     }
                                                     ?>
                                                 </ul>
@@ -116,67 +116,67 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                             </div>
                             <div class="modal-body">
                                 <form form class="needs-validation" novalidate action="../proses/proses_edit_ticket.php" method="post">
-                                <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <!-- Bagian Film -->
-                                        <div class="col-lg-6">
-                                            <div class="input-group mb-3">
-                                                <button type="button" class="btn btn-outline-secondary">Pilihan Film</button>
-                                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                                </button>
-                                                <ul class="dropdown-menu" id="dropdownFilm" <?php echo $row['id_ticket']; ?>>
-                                                    <?php
-                                                    foreach ($select_film as $value) {
-                                                        echo "<li><a class='dropdown-item'>$value[nama_film]</a></li>";
-                                                    }
-                                                    ?>
-                                                </ul>
-                                                <input type="text" class="form-control" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Film" name="nama_film" value="<?php echo $row['nama_film'] ?>" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Film.
+                                    <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <!-- Bagian Film -->
+                                            <div class="col-lg-6">
+                                                <div class="input-group mb-3">
+                                                    <button type="button" class="btn btn-outline-secondary">Pilihan Film</button>
+                                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" id="dropdownFilmEdit_<?php echo $row['id_ticket']; ?>">
+                                                        <?php
+                                                        foreach ($select_film as $value) {
+                                                            echo "<li><a class='dropdown-item'>$value[nama_film]</a></li>";
+                                                        }
+                                                        ?>
+                                                    </ul>
+                                                    <input type="text" class="form-control" id="Editfilm_<?php echo $row['id_ticket']; ?>" aria-label="Text input with segmented dropdown button" placeholder="Film" name="nama_film" value="<?php echo $row['nama_film'] ?>" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan Film.
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Bagian Theater -->
-                                        <div class="col-lg-6">
-                                            <div class="input-group mb-3">
-                                                <button type="button" class="btn btn-outline-secondary">Pilihan Theater</button>
-                                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                                </button>
-                                                <ul class="dropdown-menu" id="dropdownTheater">
-                                                    <?php
-                                                    foreach ($select_theater as $value) {
-                                                        echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
-                                                    }
-                                                    ?>
-                                                </ul>
-                                                <input type="text" class="form-control" id="Inputtheater" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Nama Theater.
+                                            <!-- Bagian Theater -->
+                                            <div class="col-lg-6">
+                                                <div class="input-group mb-3">
+                                                    <button type="button" class="btn btn-outline-secondary">Pilihan Theater</button>
+                                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" id="dropdownTheaterEdit_<?php echo $row['id_ticket']; ?>">
+                                                        <?php
+                                                        foreach ($select_theater as $value) {
+                                                            echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
+                                                        }
+                                                        ?>
+                                                    </ul>
+                                                    <input type="text" class="form-control" id="Edittheater_<?php echo $row['id_ticket']; ?>" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan Nama Theater.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-floating mb-3">
+                                                    <input type="time" class="form-control" id="floatingInput" placeholder="Jam Tayang" name="jam_tayang" value="<?php echo $row['jam_tayang'] ?>" required>
+                                                    <label for="floatingInput">Jam Tayang</label>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan Jam Tayang.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-floating mb-3">
-                                                <input type="time" class="form-control" id="floatingInput" placeholder="Jam Tayang" name="jam_tayang" value="<?php echo $row['jam_tayang'] ?>" required>
-                                                <label for="floatingInput">Jam Tayang</label>
-                                                <div class="invalid-feedback">
-                                                    Masukkan Jam Tayang.
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" name="input_ticket_validate" value="12345">Save changes</button>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="input_ticket_validate" value="12345">Save changes</button>
-                                </div>
                                 </form>
                             </div>
                         </div>
@@ -197,7 +197,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                     <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
                                     <div class="col-lg-12">
                                         <?php
-                                            echo "Apakah anda yakin ingin menghapus ticket <b>$row[nama_film]</b> di theater <b>$row[theater]</b> pada jam <b>$row[jam_tayang]</b>?";
+                                        echo "Apakah anda yakin ingin menghapus ticket <b>$row[nama_film]</b> di theater <b>$row[theater]</b> pada jam <b>$row[jam_tayang]</b>?";
                                         ?>
                                     </div>
                                     <div class="modal-footer">
@@ -211,36 +211,33 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                 </div>
                 <!-- Akhir modal Delete-->
 
-                <!-- Modal Reset Password-->
-                <div class="modal fade" id="ModalResetPassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-md modal-fullscreen-md-down">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_reset_password.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
-                                    <div class="col-lg-12">
-                                        <?php
-                                        if ($row['username'] == $_SESSION['username_TLine']) {
-                                            echo "<div class='alert alert-danger'>Anda Tidak dapat mereset password sendiri</div>";
-                                        } else {
-                                            echo "Apakah anda yakin ingin mereset password user <b>$row[username]</b> menjadi password bawaan sistem yaitu <b>password</b>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?>>Reset Password</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Akhir Reset Password-->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Menyaring film berdasarkan input
+                        document.getElementById("Editfilm_<?php echo $row['id_ticket']; ?>").addEventListener("input", function() {
+                            filterDropdown("Editfilm_<?php echo $row['id_ticket']; ?>", "dropdownFilmEdit_<?php echo $row['id_ticket']; ?>");
+                        });
+
+                        // Pilih film yang diklik
+                        document.querySelectorAll("#dropdownFilmEdit_<?php echo $row['id_ticket']; ?> a").forEach(function(item) {
+                            item.addEventListener("click", function() {
+                                document.getElementById("Editfilm_<?php echo $row['id_ticket']; ?>").value = this.textContent;
+                            });
+                        });
+
+                        // Menyaring theater berdasarkan input
+                        document.getElementById("Edittheater_<?php echo $row['id_ticket']; ?>").addEventListener("input", function() {
+                            filterDropdown("Edittheater_<?php echo $row['id_ticket']; ?>", "dropdownTheaterEdit_<?php echo $row['id_ticket']; ?>");
+                        });
+
+                        // Pilih theater yang diklik
+                        document.querySelectorAll("#dropdownTheaterEdit_<?php echo $row['id_ticket']; ?> a").forEach(function(item) {
+                            item.addEventListener("click", function() {
+                                document.getElementById("Edittheater_<?php echo $row['id_ticket']; ?>").value = this.textContent;
+                            });
+                        });
+                    });
+                </script>
             <?php
             }
             ?>
@@ -319,7 +316,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
     })()
 </script>
 
-<!-- Skrip JavaScript untuk pencarian otomatis -->
+<!-- menambah ticket baru -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Menyaring film berdasarkan input
@@ -333,9 +330,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                 document.getElementById("Inputfilm").value = this.textContent;
             });
         });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
         // Menyaring theater berdasarkan input
         document.getElementById("Inputtheater").addEventListener("input", function() {
             filterDropdown("Inputtheater", "dropdownTheater");

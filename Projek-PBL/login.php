@@ -36,7 +36,7 @@ if (!empty($_SESSION['username_TLine'])) {
                     <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Name" required>
                     <label for="floatingInput">Name</label>
                     <div class="invalid-feedback">
-                        Masukan yg bener
+                        Masukan Name
                     </div>
                 </div>
                 <div class="form-floating">
@@ -91,22 +91,30 @@ if (!empty($_SESSION['username_TLine'])) {
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h3>Welcome Back!</h3>
-                    <p>To keep connected with us please login with your personal info</p>
+                    <div class="pengguna">
+                        <p>pengguna name : rahmat@gmail.com</h6>
+                        <p style="margin-top: -30px;">pengguna password : 123</p>
+                    </div>
+                    <div class="admin">
+                        <p>Admin name : agung@gmail.com</p>
+                        <p style="margin-top: -30px;">Admin password : 123</p>
+                    </div>
                     <button class="ghost" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h3>Hello, Friend!</h3>
-                    <p>Enter your personal details and start journey with us</p>
+                    <div class="pengguna">
+                        <p>pengguna name : rahmat@gmail.com</h6>
+                        <p style="margin-top: -30px;">pengguna password : 123</p>
+                    </div>
+                    <div class="admin">
+                        <p>Admin name : agung@gmail.com</p>
+                        <p style="margin-top: -30px;">Admin password : 123</p>
+                    </div>
                     <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="keterangan">
-        <h5>pengguna name : rahmat@gmail.com</h6>
-        <h5>pengguna password : 123</h5>
-        <h5>Admin name : agung@gmail.com</h5>
-        <h5>Admin password : 123</h5>
     </div>
 
 

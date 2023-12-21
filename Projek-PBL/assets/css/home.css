@@ -1,22 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    font-family: 'poppins', sans-serif;
+}
+
 body {
-    height: 10000px;
-    background-color: #ECE5D1;
+    background-color: #f0f1ee;
 }
 
 .header_content {
     background-position: center;
-    height: 50vh;
+    height: 60vh;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(https://media.21cineplex.com/webcontent/gallery/pictures/148039134535987_1024x683.jpg);
+    background-image: url(https://berandarakyat.com/wp-content/uploads/2020/10/adaptasi-saat-pandemi-cinepolis-tawarkan-program-sewa-bioskop-pribadi.jpg);
     color: white;
 }
 
 .container {
     padding: 50px;
-    background-color: #FDF8E8;
+    background-color: #fdf8e8;
     border-radius: 10px;
 }
+
+.footer-custom .container {
+    padding: 50px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+/* icon upcoming dan play now */
+.heading-twenty {
+    height: 48px;
+    border-left: 1px solid black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%
+}
+
+.heading-twenty h3 {
+    font-size: 16px;
+    background-color: #5ec1da;
+    width: 100%;
+    max-width: 170px;
+    text-align: center;
+    padding: 4px 0;
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    left: -1px;
+    margin-bottom: 0;
+    letter-spacing: 1px
+}
+
+.heading-twenty input[type="text"] {
+    height: 32px;
+    background-color: #E6E7E8;
+    border: none;
+    margin-left: -1px;
+    width: 180px;
+    line-height: 32px;
+    padding: 4px 10px;
+    font-size: 15px
+}
+
+.heading-twenty input[type="text"]::-webkit-input-placeholder {
+    font-style: italic;
+    color: #939598
+}
+
+.heading-twenty input[type="text"]:-ms-input-placeholder {
+    font-style: italic;
+    color: #939598
+}
+
+.heading-twenty input[type="text"]::-ms-input-placeholder {
+    font-style: italic;
+    color: #939598
+}
+
+.heading-twenty input[type="text"]::placeholder {
+    font-style: italic;
+    color: #939598
+}
+
+.select-twenty {
+    position: relative;
+    width: 200px;
+    height: 32px
+}
+
+.select-twenty::before {
+    font-weight: 900;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    color: #006563;
+    z-index: 10;
+    left: 10px;
+    top: 8px;
+    pointer-events: none
+}
+
+.select-twenty .custom-select {
+    border: none;
+    background-color: #E6E7E8;
+    position: relative;
+    left: -1px;
+    height: 32px;
+    border-radius: 0;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+    color: #006563;
+    background-image: none;
+    padding: 0px 0px 0px 20px
+}
+
+.movie-load-more {
+    text-decoration: none;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: #5ec1da;
+    color: #fdf8e8;
+}
+
+.btn {
+    border-radius: 20px;
+    background-color: #fed67e;
+}
+
+.btn:hover {
+    background-color: #b7c88e;
+}
+
+/* footer {
+    background-image: url(../../foter.svg);
+    background-position: fixed center;
+    background-size: cover;
+    display: flex;
+    width: auto;
+    padding-top: 100px;
+    height: 400px;
+} */
+
+footer {
+    width: 100%;
+    background-image: url(../../foter.svg);
+    display: flex;
+    justify-content: space-between;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.col-1 {
+    width: 30%;
+}
+
+.col-2 {
+    width: 50%;
+}
+
+.col-3 {
+    width: 20%;
+}
+
+.col-1 img {
+    width: 50%;
+}
+
+.col-1 p {
+    margin-top: 10px;
+}
+
+.col-1 ul {
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+}
+
+.col-1 ul li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.col-1 ul li a {
+    color: #fff;
+}
+
+.col-3 h3 {
+    margin-top: 0;
+}
+
+.col-3 ul {
+    padding: 0;
+    margin: 10px 0 0 0;
+    list-style: none;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+}
+.footer-bottom .footer-content{
+    margin-bottom: -50px;
+}
+
+@media (max-width: 767px) {
+    footer {
+        height: 100%;
+        /* Gunakan tinggi 100% untuk memastikan ketinggian yang memadai di perangkat kecil */
+    }
+}
+
+/* akhir Footer */

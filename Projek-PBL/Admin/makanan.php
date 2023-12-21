@@ -123,7 +123,7 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                     </div>
                 </div>
             </div>
-            <!-- Akhir modal tambah Film baru  -->
+            <!-- Akhir modal tambah makanan baru  -->
 
             <?php
             foreach ($result as $row) {
@@ -206,7 +206,6 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                 <form form class="needs-validation" novalidate action="../proses/proses_edit_menu.php" method="post">
                                     <input type="hidden" value="<?php echo $row['id_menu'] ?>" name="id">
                                     <input type="hidden" name="foto_lama" value="<?php echo $row['foto_menu']; ?>">
-                                    <?php echo $row['foto_menu']; ?>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="input-group mb-3">
@@ -220,14 +219,14 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                                 <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <span class="visually-hidden">Toggle Dropdown</span>
                                                 </button>
-                                                <ul class="dropdown-menu" id="dropdownFilm">
+                                                <ul class="dropdown-menu" id="dropdownFilmEdit_<?php echo $row['id_menu']; ?>">
                                                     <?php
                                                     foreach ($select_theater as $value) {
                                                         echo "<li><a class='dropdown-item'>$value[nama_theater]</a></li>";
                                                     }
                                                     ?>
                                                 </ul>
-                                                <input type="text" class="form-control py-3" id="Inputfilm" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
+                                                <input type="text" class="form-control py-3" id="Editfilm_<?php echo $row['id_menu']; ?>" aria-label="Text input with segmented dropdown button" placeholder="Theater" name="theater" value="<?php echo $row['nama_theater'] ?>" required>
                                                 <div class="invalid-feedback">
                                                     Masukkan Nama Theater.
                                                 </div>
@@ -305,20 +304,17 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form form class="needs-validation" novalidate action="../proses/proses_delete_user.php" method="post">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <form form class="needs-validation" novalidate action="../proses/proses_delete_menu.php" method="post">
+                                    <input type="hidden" value="<?php echo $row['id_menu'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['foto_menu'] ?>" name="foto">
                                     <div class="col-lg-12">
                                         <?php
-                                        if ($row['username'] == $_SESSION['username_TLine']) {
-                                            echo "<div class='alert alert-danger'>Anda Tidak dapat menghapus akun sendiri</div>";
-                                        } else {
-                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
-                                        }
+                                            echo "Apakah anda yakin ingin menghapus user <b>$row[nama_menu]</b>";
                                         ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_TLine']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        <button type="submit" class="btn btn-danger" name="input_menu_validate" value="12345">Hapus</button>
                                     </div>
                                 </form>
                             </div>
@@ -327,6 +323,33 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
                 </div>
                 <!-- Akhir modal Delete-->
 
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Menyaring film berdasarkan input
+                        document.getElementById("Editfilm_<?php echo $row['id_menu']; ?>").addEventListener("input", function() {
+                            filterDropdown("Editfilm_<?php echo $row['id_menu']; ?>", "dropdownFilmEdit_<?php echo $row['id_menu']; ?>");
+                        });
+
+                        // Pilih film yang diklik
+                        document.querySelectorAll("#dropdownFilmEdit_<?php echo $row['id_menu']; ?> a").forEach(function(item) {
+                            item.addEventListener("click", function() {
+                                document.getElementById("Editfilm_<?php echo $row['id_menu']; ?>").value = this.textContent;
+                            });
+                        });
+
+                        // Menyaring theater berdasarkan input
+                        document.getElementById("Edittheater_<?php echo $row['id_menu']; ?>").addEventListener("input", function() {
+                            filterDropdown("Edittheater_<?php echo $row['id_menu']; ?>", "dropdownTheaterEdit_<?php echo $row['id_menu']; ?>");
+                        });
+
+                        // Pilih theater yang diklik
+                        document.querySelectorAll("#dropdownTheaterEdit_<?php echo $row['id_menu']; ?> a").forEach(function(item) {
+                            item.addEventListener("click", function() {
+                                document.getElementById("Edittheater_<?php echo $row['id_menu']; ?>").value = this.textContent;
+                            });
+                        });
+                    });
+                </script>
             <?php
             }
             ?>
@@ -420,8 +443,36 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
     })()
 </script>
 
-<!-- Skrip JavaScript untuk pencarian otomatis -->
+<!-- menambah menu baru -->
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menyaring film berdasarkan input
+        document.getElementById("Inputfilm").addEventListener("input", function() {
+            filterDropdown("Inputfilm", "dropdownFilm");
+        });
+
+        // Pilih film yang diklik
+        document.querySelectorAll("#dropdownFilm a").forEach(function(item) {
+            item.addEventListener("click", function() {
+                document.getElementById("Inputfilm").value = this.textContent;
+            });
+        });
+    });
+
+    // Fungsi untuk menyaring dropdown
+    function filterDropdown(inputId, dropdownId) {
+        var value = document.getElementById(inputId).value.toLowerCase();
+        var dropdown = document.getElementById(dropdownId);
+
+        // Menyaring opsi dropdown berdasarkan input
+        Array.from(dropdown.children).forEach(function(item) {
+            var optionText = item.textContent.toLowerCase();
+            item.style.display = optionText.includes(value) ? 'block' : 'none';
+        });
+    }
+</script>
+<!-- Skrip JavaScript untuk pencarian otomatis -->
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Menyaring film berdasarkan input
         document.getElementById("Inputfilm").addEventListener("input", function() {
@@ -461,4 +512,4 @@ $select_theater = mysqli_query($conn, "SELECT id_theater,nama_theater FROM tb_th
             item.style.display = optionText.includes(value) ? 'block' : 'none';
         });
     }
-</script>
+</script> -->
