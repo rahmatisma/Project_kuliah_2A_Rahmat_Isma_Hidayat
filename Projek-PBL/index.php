@@ -14,6 +14,8 @@
     } else if (isset($_GET['x']) && $_GET['x'] == 'PilihKursi') {
         $page = "pemilihan_kursi.php";
         include "main.php";
+    } else if (isset($_GET['x']) && $_GET['x'] == 'ChoosePayment') {
+        include "pemilihan_metode_pembayaran.php";
     } else if (isset($_GET['x']) && $_GET['x'] == 'Theaters') {
         $page = "Theaters.php";
         include "main.php";

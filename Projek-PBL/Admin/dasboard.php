@@ -26,43 +26,6 @@
         </div>
     </div>
     <!-- end sales -->
-    <div class="card mt-4 border-0 bg-light rounded">
-        <div class="card-body text-center">
-            <div>
-                <canvas id="myChart"></canvas>
-            </div>
-            <script>
-                const ctx = document.getElementById('myChart');
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: [<?php echo $string_menu ?>],
-                        datasets: [{
-                            label: 'Jumlah Porsi Terjual',
-                            data: [<?php echo $string_jumlah_pesanan ?>],
-                            borderWidth: 1,
-                            backgroundColor: [
-                                'rgba(245, 39, 102, 0.45)',
-                                'rgba(0, 96, 234, 0.64)',
-                                'rgba(234, 255, 93, 0.64)',
-                                'rgba(0, 202, 27, 0.64)',
-                                'rgba(195, 20, 239, 0.64)',
-                                'rgba(246, 150, 52, 0.64)',
-                            ]
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            </script>
-        </div>
-    </div>
     <div class="card income">
         <div class="card-body">
             <span class="material-symbols-outlined">stacked_line_chart</span>

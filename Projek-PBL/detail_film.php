@@ -147,15 +147,22 @@ $jam_tayang = mysqli_query($conn, "SELECT * FROM tb_film WHERE tb_film.id_film =
                                 <?php
                                 $theater = $row['theater'];
                                 foreach ($result as $row) {
-                                    if($theater == $row['theater']) {
+                                    if ($theater == $row['theater']) {
                                 ?>
-                                    <div class="jam-tersedia">
-                                        <a href="/?x=PilihKursi&DetailFilm=<?php echo $row['id_ticket'] ?> &nama_film=<?php echo $row['nama_film']?> &theater=<?php echo $row['theater']?> &jam_tayang=<?php echo $row['jam_tayang']?>">
-                                            <button class="tombol-jam">
-                                                <span><?php echo $row['jam_tayang'] ?></span>
-                                            </button>
-                                        </a>
-                                    </div>
+                                        <form form class="needs-validation" novalidate action="/proses/proses_input_order.php" method="post">
+                                            <input type="hidden" value="<?php echo $_SESSION['username_TLine'] ?>" name="nama">
+                                            <input type="hidden" value="<?php echo $row['id_ticket'] ?>" name="id_ticket">
+                                            <input type="hidden" value="<?php echo $row['nama_film'] ?>" name="nama_film">
+                                            <input type="hidden" value="<?php echo $row['theater'] ?>" name="theater">
+                                            <input type="hidden" value="<?php echo $row['jam_tayang'] ?>" name="jam_tayang">
+                                            <div class="jam-tersedia">
+                                                <a href="#">
+                                                    <button type="submit" name="input_order_validate" value="12345" class="tombol-jam">
+                                                        <span><?php echo $row['jam_tayang'] ?></span>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </form>
                                 <?php
                                     }
                                 }
@@ -176,18 +183,22 @@ $jam_tayang = mysqli_query($conn, "SELECT * FROM tb_film WHERE tb_film.id_film =
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <!-- script untuk menampilkan tanggal -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var currentDate = new Date();
             var numberOfDays = 10;
             var dateList = document.getElementById("dynamicDates");
+            var selectedDate = null; // Variabel untuk menyimpan tanggal yang dipilih
 
             for (var i = 0; i < numberOfDays; i++) {
                 var nextDate = new Date();
                 nextDate.setDate(currentDate.getDate() + i);
 
-                var formattedDate = nextDate.toLocaleDateString('en-US', {
+                addDateListItem(nextDate);
+            }
+
+            function addDateListItem(date) {
+                var formattedDate = date.toLocaleDateString('en-US', {
                     weekday: 'long',
                     day: 'numeric',
                     month: 'short'
@@ -195,10 +206,11 @@ $jam_tayang = mysqli_query($conn, "SELECT * FROM tb_film WHERE tb_film.id_film =
 
                 var listItem = document.createElement("li");
                 listItem.classList.add("hover");
+                listItem.setAttribute("data-date", formattedDate); // Tambahkan atribut data-date dengan nilai tanggal
 
                 var dayElement = document.createElement("div");
-                if (nextDate.getDay() === 0 || nextDate.getDay() === 6) {
-                    dayElement.classList.add("hari-weekend"); // Tambahkan class untuk warna merah pada weekend
+                if (date.getDay() === 0 || date.getDay() === 6) {
+                    dayElement.classList.add("hari-weekend");
                 } else {
                     dayElement.classList.add("hari");
                 }
@@ -207,8 +219,8 @@ $jam_tayang = mysqli_query($conn, "SELECT * FROM tb_film WHERE tb_film.id_film =
 
                 var dateElement = document.createElement("div");
                 dateElement.classList.add("bulan-tanggal");
-                if (nextDate.getDay() === 0 || nextDate.getDay() === 6) {
-                    dateElement.classList.add("tgl-weekend"); // Tambahkan class untuk warna merah pada weekend
+                if (date.getDay() === 0 || date.getDay() === 6) {
+                    dateElement.classList.add("tgl-weekend");
                 }
                 dateElement.innerHTML = '<span class="tgl-link">' + formattedDate.substr(formattedDate.indexOf(' ') + 1) + '</span>';
                 listItem.appendChild(dateElement);
@@ -222,12 +234,34 @@ $jam_tayang = mysqli_query($conn, "SELECT * FROM tb_film WHERE tb_film.id_film =
 
                     // Tambahkan class 'selected' ke elemen yang diklik
                     this.classList.add('selected');
+
+                    // Simpan nilai tanggal yang dipilih
+                    selectedDate = this.getAttribute("data-date");
+
+                    // Tambahkan nilai tanggal ke URL
+                    updateUrl();
                 });
 
                 dateList.appendChild(listItem);
             }
+
+            // Event listener untuk tombol-jam
+            var tombolJam = document.querySelectorAll(".tombol-jam");
+            tombolJam.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var jamTayang = this.querySelector("span").textContent; // Ambil nilai jam tayang dari tombol-jam yang diklik
+                    if (jamTayang !== null) {
+                        // Redirect ke URL dengan parameter tanggal dan jam tayang menggunakan PHP
+                        window.location.href = "/?x=PilihKursi&DetailFilm=<?php echo $row['id_ticket'] ?>&nama_film=<?php echo $row['nama_film'] ?>&theater=<?php echo $row['theater'] ?>&jam_tayang=" + jamTayang;
+                    } else {
+                        // Tampilkan pesan kesalahan atau ambil tindakan lain sesuai kebutuhan Anda
+                        alert("Pilih tanggal dan jam tayang terlebih dahulu.");
+                    }
+                });
+            });
         });
     </script>
+
 </body>
 
 </html>

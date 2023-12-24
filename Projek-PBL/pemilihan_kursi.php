@@ -1,4 +1,10 @@
 <?php
+if (empty($_SESSION['username_TLine'])) {
+    $message = '<script>alert("Jika ingin memesan ticket harap login terlebih dahulu");
+                        window.location="login"</script>';
+    echo $message;
+}
+
 include "proses/connect.php";
 $query = mysqli_query($conn, "SELECT * FROM tb_ticket
     RIGHT JOIN tb_film ON tb_film.nama_film = tb_ticket.nama_film
@@ -55,7 +61,11 @@ $order = mysqli_query($conn, "SELECT waktu FROM tb_order");
 
 </head>
 <?php
+$seatsSelected = false;
 foreach ($query as $row) {
+    if (isset($_POST['selected_seats']) && !empty($_POST['selected_seats'])) {
+        $seatsSelected = true;
+    }
 ?>
 
     <body style="background-color: #f0f1ee;">
@@ -222,8 +232,8 @@ foreach ($query as $row) {
                             <hr>
                         </li>
                         <li>
-                            <p class="pesanan-detail">Date Time</p>
-                            <p class="detail">Sat 1 July 15:50</p>
+                            <p class="pesanan-detail">Show Times</p>
+                            <p class="detail"><?php echo $_GET['jam_tayang'] ?></p>
                         </li>
                         <li>
                             <p class="pesanan-detail">Class</p>
@@ -238,10 +248,9 @@ foreach ($query as $row) {
                         <p>Seat Selected</p>
                         <p class="price">Rp.0</p>
                     </div>
-
                     <div class="button-pesan">
-                        <a href="pemilihan_metode_pembayaran.php">
-                            <button class="continue">Continue</button>
+                        <a href="ChoosePayment">
+                            <button type="submit" class="continue" name="input_order_validate" value="12345" <?php echo $seatsSelected ? '' : 'disabled' ?>>Continue</button>
                         </a>
                     </div>
                 </div>
@@ -249,23 +258,25 @@ foreach ($query as $row) {
         </div>
     <?php
 }
+
     ?>
 
 
     <!-- script boostrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
+
 
     <script src="https://kit.fontawesome.com/90ac0be598.js" crossorigin="anonymous"></script>
 
 
     <script>
         var icons = document.querySelectorAll('.icon');
+        var continueButton = document.querySelector('.continue');
 
         icons.forEach(function(icon) {
             icon.addEventListener('click', function() {
                 toggleColor(icon);
-                updateTotalPrice(); // Tambahkan pemanggilan fungsi untuk memperbarui total harga
+                updateTotalPrice();
+                checkSeatSelection(); // Pindahkan pemanggilan fungsi ini ke sini
             });
         });
 
@@ -296,10 +307,15 @@ foreach ($query as $row) {
             });
         }
 
+        function checkSeatSelection() {
+            var seatElements = document.querySelectorAll('.seat-number p.Choice');
+            continueButton.disabled = seatElements.length === 0;
+        }
+
         function updateTotalPrice() {
             var seatElements = document.querySelectorAll('.seat-number p.Choice');
             var totalPrice = seatElements.length * <?php echo $row['harga_weekend']; ?>;
-            document.querySelector('.price').innerText = 'Rp.' + totalPrice.toLocaleString('id-ID'); // Format harga ke dalam format mata uang Indonesia
+            document.querySelector('.price').innerText = 'Rp.' + totalPrice.toLocaleString('id-ID');
         }
     </script>
 
