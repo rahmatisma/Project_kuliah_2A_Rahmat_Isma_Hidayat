@@ -16,7 +16,7 @@ while ($record_chart = mysqli_fetch_array($query_chart)) {
 }
 $array_menu = array_column($result_chart, 'nama_menu');
 $array_menu_qoute = array_map(function ($menu) {
-    return "'".$menu."'";
+    return "'" . $menu . "'";
 }, $array_menu);
 $string_menu = implode(',', $array_menu_qoute);
 
@@ -85,34 +85,23 @@ $string_jumlah_pesanan = implode(',', $array_jumlah_pesanan);
                 <canvas id="myChart"></canvas>
             </div>
             <script>
-                const ctx = document.getElementById('myChart');
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: [<?php echo $string_menu ?>],
-                        datasets: [{
-                            label: 'Jumlah Porsi Terjual',
-                            data: [<?php echo $string_jumlah_pesanan ?>],
-                            borderWidth: 1,
-                            backgroundColor:[
-                                'rgba(245, 39, 102, 0.45)',
-                                'rgba(0, 96, 234, 0.64)',
-                                'rgba(234, 255, 93, 0.64)',
-                                'rgba(0, 202, 27, 0.64)',
-                                'rgba(195, 20, 239, 0.64)',
-                                'rgba(246, 150, 52, 0.64)',
-                            ]
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
+                const data = {
+                    labels: [
+                        'Red',
+                        'Blue',
+                        'Yellow'
+                    ],
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                    }]
+                };
             </script>
         </div>
     </div>

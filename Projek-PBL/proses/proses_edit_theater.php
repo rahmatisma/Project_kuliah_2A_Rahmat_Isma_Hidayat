@@ -7,6 +7,8 @@
     $harga_weekday = (isset($_POST['harga_weekday'])) ? htmlentities($_POST['harga_weekday']) : "";
     $harga_weekend = (isset($_POST['harga_weekend'])) ? htmlentities($_POST['harga_weekend']) : "";
     $alamat = (isset($_POST['alamat'])) ? htmlentities($_POST['alamat']) : "";
+    $kelas = (isset($_POST['class'])) ? htmlentities($_POST['class']) : "";
+
 
     if (!empty($_POST['input_theater_validate'])) {
         $select = mysqli_query($conn, "SELECT * FROM tb_theaters WHERE nama_theater = '$nama_theater' AND id_theater != '$id_theater'");
@@ -14,7 +16,7 @@
             $message = '<script>alert("Theater yang dimasukkan telah ada");
                         window.location="../Theater"</script>';
         } else {
-            $query = mysqli_query($conn, "UPDATE tb_theaters SET kota = '$kota', nama_theater = '$nama_theater', alamat = '$alamat', nohp = '$nohp', harga_weekend = '$harga_weekend', harga_weekday = '$harga_weekday' WHERE id_theater = '$id_theater'");
+            $query = mysqli_query($conn, "UPDATE tb_theaters SET kota = '$kota', nama_theater = '$nama_theater', alamat = '$alamat', nohp = '$nohp', harga_weekend = '$harga_weekend', harga_weekday = '$harga_weekday', kelas = '$kelas' WHERE id_theater = '$id_theater'");
             if ($query) {
                 $message = '<script>alert("Data berhasil diupdate")
                         window.location="../Theater"</script>';

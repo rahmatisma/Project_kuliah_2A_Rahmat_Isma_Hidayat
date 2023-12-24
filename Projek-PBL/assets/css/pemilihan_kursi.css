@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+/* body */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+
+.container {
+    background-color: transparent;
+}
+
+/* tombol kembali */
+.button-back {
+    display: flex;
+    align-items: center;
+}
+
+.button-back a {
+    margin-right: 10px;
+}
+
+.icon-panah {
+    margin-top: 7px;
+}
+
+.button-back p {
+    margin: 0;
+}
+
+/* pemilihan kursi */
+.theater {
+    border: 1px solid #000;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fdf8e8;
+}
+
+/* keteangan pembeli */
+.keterangan {
+    border: 1px solid #000;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    gap: 10px;
+    align-items: flex-start;
+    position: relative;
+    grid-template-rows: auto 1fr auto;
+    background-color: #fdf8e8;
+
+}
+
+.foto-film img {
+    max-width: 100%;
+    display: block;
+
+}
+
+.foto-film {
+    width: 80%;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+
+}
+
+.judul {
+    margin-top: 30px;
+}
+
+.pesanan-detail {
+    margin-left: -30px;
+    text-align: left;
+
+}
+
+.detail {
+    text-align: right;
+    margin-left: 70px;
+}
+
+.keterangan h2 {
+    margin-top: -30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+li p:first-child {
+    margin-right: 10px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.seat-number {
+    justify-self: left;
+
+}
+
+.seat-selected {
+    justify-self: left;
+}
+
+.button-pesan button {
+    width: 100%;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+.panel-screen {
+    height: 10px;
+    width: 80%;
+    border: none;
+    border-top: 10px solid rgb(105, 105, 214);
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.screen-top-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.keterangan-harga {
+    border: 1px solid palevioletred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    background-color: antiquewhite;
+}
+
+.harga {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+.rectangle__seat {
+    text-align: center;
+}
+
+.section-space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-body-third {
+    margin: 0;
+    padding: 0;
+}
+
+.row-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -30px;
+    padding: 5px;
+}
+
+.bangku {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.space {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}
+
+
+.seat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+
+p {
+    margin: 5px 0 0;
+}
+
+.theater {
+    max-width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 900px;
+}
+
+.keteranga-bangku {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    background-color: #c73d3d;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.keteranga-bangku i {
+    margin-right: 50px;
+}
+
+.keteranga-bangku p {
+    margin: 0;
+}
+
+.bangku-Available {
+    color: gray;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.bangku--Your-Choice {
+    font-size: 30px;
+    padding: 5px;
+}
+
+.bangku-Unavailable {
+    color: rgba(44, 237, 44, 0.796);
+    font-size: 30px;
+    padding: 5px;
+}
+
+.Choice {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 5px;
+    width: 50px;
+    text-align: center;
+    background-color: rgba(44, 237, 44, 0.796);
+}
+
+.price {
+    color: rgba(44, 237, 44, 0.796);
+}
+
+.bangku {
+    cursor: pointer;
+}
+
+/* layar hp */
+@media screen and (max-width: 500px) {
+    .seat {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .seat .row-wrap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .seat .row-wrap .seat {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .seat .row-wrap .seat:first-child {
+        margin-left: 10px;
+    }
+
+    .keteranga-bangku{
+        width: 150%;
+    }
+
+    .keterangan-harga {
+        width: 150%;
+    }
+
+    .keterangan {
+        height: 850px;
+    }
+    
+    .detail {
+        text-align: right;
+        margin-left: 100px;
+    }
+}
+
+/* layar tab */
+@media screen and (max-width: 1000px) and (min-width:500px) {
+    .keterangan {
+        height: 1250px;
+    }
+
+    .detail {
+        text-align: right;
+        margin-left: 500px;
+    }
+
+    .judul {
+        margin-top: 50px;
+    }
+
+    .pesanan-detail {
+        margin-top: -50px;
+    }
+
+
+}
+
+/* dekstop */
+@media screen and (min-width: 1024px) {}

@@ -38,7 +38,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingInput" placeholder="kota" name="kota" required>
                                             <label for="floatingInput">Kota</label>
@@ -47,12 +47,21 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp" required>
                                             <label for="floatingInput">No HP</label>
                                             <div class="invalid-feedback">
                                                 Masukkan No HP.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingInput" placeholder="class" name="class" required>
+                                            <label for="floatingInput">Class</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Class.
                                             </div>
                                         </div>
                                     </div>
@@ -116,18 +125,25 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-floating mb-3">
                                                 <input disabled type="text" class="form-control" id="floatingInput" placeholder="kota" name="kota" value="<?php echo $row['kota'] ?>">
                                                 <label for="floatingInput">Kota</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-floating mb-3">
                                                 <input disabled type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp" value="<?php echo $row['nohp'] ?>">
                                                 <label for="floatingInput">No HP</label>
                                             </div>
                                         </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-floating mb-3">
+                                                <input disabled type="text" class="form-control" id="floatingInput" placeholder="Class" name="class" value="<?php echo $row['kelas'] ?>">
+                                                <label for="floatingInput">Class</label>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -183,7 +199,7 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-floating mb-3">
                                                 <input type="text" class="form-control" id="floatingInput" placeholder="kota" name="kota" required value="<?php echo $row['kota'] ?>">
                                                 <label for="floatingInput">Kota</label>
@@ -192,12 +208,21 @@ while ($record = mysqli_fetch_array($query)) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-floating mb-3">
                                                 <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp" required value="<?php echo $row['nohp'] ?>">
                                                 <label for="floatingInput">No HP</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan No Hp.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="floatingInput" placeholder="class" name="class" required value="<?php echo $row['kelas'] ?>">
+                                                <label for="floatingInput">Class</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Class.
                                                 </div>
                                             </div>
                                         </div>

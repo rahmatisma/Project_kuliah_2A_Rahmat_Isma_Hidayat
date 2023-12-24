@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* header */
+.header {
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+
+}
+
+.icon-panah {
+    margin-right: 10px;
+}
+
+/* pemberitahuan */
+.pemberitahuan {
+    border: 1px solid red;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    margin-left: 25px;
+}
+
+/* choise paimend */
+.pemilihan-pembayaran {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.gambar {
+    margin-right: 10px;
+}
+
+.pemilihan-pembayaran {
+    margin-top: 30px;
+}
+
+.pemilihan-pembayaran img {
+    width: 80px;
+}
+
+
+/* card */
+
+.payment-methods {
+    margin-left: 40px;
+    margin-top: 2rem;
+}
+
+.card {
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.gambar-card {
+    width: 70px;
+}
+
+.checkbox-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.checkbox-container input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.checkbox-container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked+.checkmark {
+    background-color: #007bff;
+}
+
+.ordered-movie-content {
+    display: flex;
+    align-items: center;
+}
+
+.movie-poster {
+    width: 100px;
+    border-radius: 10px;
+}
+.movie-poster-wrap {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.detail-film {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pemesanan {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-basis: 100%;
+}
+
+.pemesanan p {
+    margin: 0;
+}
+
+.pemesanan p:last-child {
+    margin-left: auto;
+}
+
+.ticket-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-basis: 100%;
+}
+
+.button-bayar {
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 10px;
+    color: black;
+}
+
+.keterangan-header {
+    margin-top: 8rem;
+}
+
+.row {
+    align-items: center;
+}
+@media screen and (max-width: 500px) {
+    .gambar-card {
+        display: none;
+    }
+}

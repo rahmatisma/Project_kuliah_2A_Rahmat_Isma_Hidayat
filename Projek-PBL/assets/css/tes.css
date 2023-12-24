@@ -1,64 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-/* body */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', sans-serif;
-}
-
-body {
-    background-color: #f0f1ee;
-}
 
 .row .foto-film {
-    /* margin-left: 100px; */
+    margin-left: 100px;
     border-radius: 10px;
-    /* width: 250px; */
+    width: 250px;
+}
+
+.movie-content .age {
+    margin-top: -15px;
 }
 
 .kiri .tombol-tiket a {
     text-decoration: none;
     color: #000;
     border: 1px black solid;
-    padding: 7px 90px 7px 90px;
+    padding: 5px;
     border-radius: 10px;
     align-items: center;
+    display: flex;
     justify-content: center;
     width: 250px;
+    margin-left: 200px;
     background-color: #b7c88e;
-    
 }
 
 ul.desc-movie {
     list-style: none;
 }
 
-.desc-movie {
+ul.desc-movie li {
     list-style: none;
-    padding: 0;
-}
-
-.desc-movie li {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: start; /* Menjaga elemen sejajar di bagian atas */
-    margin-bottom: 20px;
 }
 
 .desc-movie span {
-    display: inline-block;
-    width: 120px; /* Menambahkan margin agar ":" tidak menempel pada teks */
+    white-space: nowrap;
+    margin-left: -30px;
 }
 
-/* Gaya tambahan untuk menangani teks yang panjang */
-.movie_cast span,
-.movie_synopsis span {
-    flex-shrink: 0; /* Hindari pemendekan elemen span */
-    width: 120px; /* Lebar maksimum elemen span */
-}
-
-/* batas */
 #check {
     display: none;
 }
@@ -68,16 +46,16 @@ ul.desc-movie {
     transition: 0.5s linear;
 }
 
-/* label {
+label {
     display: none;
     margin-top: 10px;
     color: rgb(81, 38, 190);
     text-decoration: underline;
     cursor: pointer;
     font-weight: 600;
-} */
+}
 
-/* #check:checked~.content {
+#check:checked~.content {
     display: block;
 }
 
@@ -89,7 +67,7 @@ ul.desc-movie {
     content: 'Show less';
     display: block;
     visibility: visible;
-} */
+}
 
 .tanggal ul,
 li {
@@ -109,26 +87,16 @@ li {
 
 .bulan-tanggal {
     text-align: center;
-    font-size: 13px; /* Atur ukuran font sesuai kebutuhan */
+    font-size: 18px;
 }
 
 .hari {
-    font-size: 15px; /* Atur ukuran font sesuai kebutuhan */
-}
-
-/* Tambahkan gaya untuk elemen yang terpilih */
-.list-tanggal li.selected {
-    border-bottom: 2px solid #007bff; /* Warna garis bawah yang dapat disesuaikan */
-    font-weight: bold; /* Tambahkan gaya yang sesuai untuk menandai elemen yang terpilih */
+    font-size: 14px;
+    text-align: center;
 }
 
 .hari-weekend {
     font-size: 14px;
-    color: red; /* Ganti warna sesuai keinginan Anda */
-}
-.tgl-weekend {
-    font-size: 14px;
-    color: red; /* Ganti warna sesuai keinginan Anda */
 }
 
 .search-container .form-control {
